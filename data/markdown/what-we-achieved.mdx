@@ -1,0 +1,72 @@
+---
+title: O que temos até então
+---
+
+Até o presente momento, os objetivos propostos foram parcialmente atingidos. Primeiramente, bases de dados de arquivos de áudio em português foram encontradas. Um desses bancos é o Audio Corpora - Bases de Áudio, um repositório no GitLab do FalaBrasil, um grupo de pesquisa em processamento de fala em português brasileiro da Universidade Federal do Pará. Este último disponibilizou de maneira gratuita 4 DVDs, cada um contendo centenas de gravações curtas - com cerca de 5 (cinco) segundos - no formato .wav. Essas gravações são de mais de 100 vozes distintas, e são acompanhadas das suas transcrições no formato .txt. Outro conjunto de dados encontrado foi o Mozilla Common Voice (ARDILA et al., 2019), que possui milhares de áudios agrupados juntamente com seus conteúdos em arquivos no formato .csv. Seu lado negativo, porém, é a não diversidade de vozes, apesar da quantidade de horas em áudio disponibilizadas, que é muito elevada. A princípio, apenas o primeiro conjunto será utilizado, mas, caso necessário, será feito uso do último citado.
+
+Além disso, possíveis modelos a serem usados para geração das deepfakes foram identificados. Entre eles, destacam-se: Tacotron 2 (SHEN et al., 2017), Hifi-GAN (KONG; KIM, J; BAE, 2020), GlowTTS (KIM et al., 2020), WaveNet (VAN DEN OORD et al., 2016), entre outros. Contudo, a maioria deles apresentou problemas de instalação de pacotes ou exigiu componentes gráficos avançados e tempo de execução muito acima do disponível. Todavia, foi descoberto um modelo chamado XTTS (CASANOVA et al., 2024) que se destacou pela fácil usabilidade e entregou resultados aceitáveis. Por falta de opções e recursos, ele será usado por enquanto, caso não seja encontrado nenhum que atenda aos requisitos do projeto. Entretanto, entende-se que a utilização de apenas um modelo pode trazer consequências negativas para os resultados desejados, visto que o modelo final deve ficar enviesado ao padrão das deepfakes geradas pelo XTTS.
+
+Em seguida, identificado tal modelo, o mesmo foi alimentado com os áudios e transcrições de uma parcela da base de dados encontrada, gerando deepfakes. Com os conteúdos produzidos, um dataset inicial de áudios reais e falsos foi organizado. Após essa etapa, 60% dos áudios foram pré-processados, gerando espectrogramas CQT com dimensões de 256px. No total, o dataset atual possui cerca de 110.000 (cento e dez mil) espectrogramas, sendo que tais imagens já possuem sons de ambiente e ruídos introduzidos.
+
+Outra meta parcialmente cumprida foi o planejamento inicial e codificação de diferentes modelos classificatórios, sendo um deles a rede neural convolucional (CNN), que foi codificada baseada em arquiteturas já existentes, como observa-se na Figura 3.
+
+<br />
+
+<Image
+  src="/images/cnn-arquitecture.png"
+  width="818"
+  height="504"
+  alt="Image"
+/>
+> Arquitetura da rede neural convolucional (CNN) desenvolvida
+
+Ademais, após termos criado este modelo inicial, partimos para um treinamento primário do mesmo utilizando uma pequena amostra do conjunto de áudios. Mais especificamente, foram utilizados espectrogramas de 5 vozes reais, rotuladas como “real”, em conjunto com suas deepfakes correspondentes, rotuladas como “fake”, além de espectrogramas de sons não humanos aleatórios, rotulados como “other”, totalizando cerca de 12000 espectrogramas. O treinamento foi realizado por 25 iterações, em um computador com processador 13th Gen Intel(R) Core(TM) i7-1355U 1.70 GHz, e memória de 16,0 GB. Os hyperparameters usados no treinamento podem ser visualizados na Tabela 1. Já os resultados podem ser visualizados na Figura 4, que possui dois gráficos: um superior e um inferior, que mostram, respectivamente, a precisão e o erro do modelo ao longo das iterações de treinamento. 
+
+| Hiperparâmetro          | Valor utilizado       |
+| ----------------------- | ------------ |
+| Número de epochs  | 100 |
+| Tamanho do batch | 32   |
+| Taxa de aprendizagem    | 0.01 |
+| Paciência               | 15  |
+| Função de loss          | Mean Squared Error (MSE) |
+| Optimizador             | Adam |
+> Alguns dos hyperparameters e seus respectivos valores utilizados no treinamento inicial da CNN desenvolvida
+
+<br />
+
+<Image
+  src="/images/cnn-metrics.png"
+  width="518"
+  height="304"
+  alt="Image"
+/>
+> Treinamento inicial da CNN desenvolvida
+
+Fazendo-se uma análise qualitativa dos resultados, é possível observar que ocorreu overfitting durante o treinamento, isto é, o modelo ficou enviesado ao conjunto de dados usado no processo, o que o levou a ter uma acurácia extremamente alta. Isto se deve ao fato de termos utilizado uma pequena parcela do dataset, fazendo com que o modelo não tivesse dados o suficiente para poder generalizar suas verificações para áudios externos. Além disso, acreditamos que outro fator que corroborou para esse resultado foi o uso de somente um modelo para a geração das deepfakes, de modo que nossa rede está limitada a um tipo de deepfake específico.
+
+Outro modelo planejado e codificado foi o da rede adversária generativa com classificador externo (EC-GAN). Entretanto, tal modelo não foi ainda testado ou treinado. Utilizando o trabalho de Haque (2023) como base e seus códigos de implementação como referência,uma prova de conceito inicial que segue a arquitetura proposta pelo mesmo foi concebida, como se vê na Figura 5.
+
+<br />
+
+<Image
+  src="/images/ecgan-arquitecture.png"
+  width="818"
+  height="504"
+  alt="Image"
+/>
+> Arquitetura da prova de conceito da rede adversária generativa com classificador externo (EC-GAN)
+
+Por fim, foram desenvolvidas a primeira versão da API e do website propostos. É importante notar que, como o modelo classificatório final ainda não está pronto, ambos os softwares não são completamente funcionais. A estrutura inicial da API pode ser vista na figura abaixo.
+
+<br />
+
+<Image
+  src="/images/api-arquitecture.png"
+  width="818"
+  height="504"
+  alt="Image"
+/>
+> Estrutura da API que será utilizada para futura conexão com o website
+
+Dessa forma, partimos agora para a expansão do treinamento do modelo feito com a arquitetura convolucional, bem como a exploração de outras arquiteturas e seus treinamentos, além do desenvolvimento final da API e sua conexão com o website.
+

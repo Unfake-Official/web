@@ -1,0 +1,41 @@
+---
+title: O problema
+---
+
+Nos últimos anos, houve um desenvolvimento de aplicações de mídia social e a adoção generalizada pela população de dispositivos conectados à internet como computadores, smartphones e tablets, revolucionando a comunicação e interação entre os usuários. Rapidamente, os mesmos se tornaram capazes de produzir, compartilhar e interagir com conteúdos de forma simples e imediata, criando uma cultura de autoexpressão digital (MUBARAK et al., 2023).
+
+No entanto, esse avanço tecnológico também trouxe consigo novos desafios, como as deepfakes. O termo se refere a conteúdos gerados ou manipulados por técnicas de Inteligência Artificial (IA), que diferem de outras ferramentas de edição manual por produzirem vídeos, imagens, áudios e textos muito semelhantes à realidade (KHANJANI; WATSON; JANEJA, 2023).
+
+Tais conteúdos são gerados com uso de diversas redes neurais profundas complexas, como as redes neurais convolucionais (CNN) e recorrentes (RNN), as redes adversárias generativas (GAN), os autoencoders variáveis (VAE) e os modelos de difusão (DMs) (MUBARAK et al., 2023). Vale lembrar que o desempenho dos mesmos depende da quantidade de dados que recebem, e, atualmente, quantidades massivas de dados são produzidas diariamente na internet, tornando-os cada vez mais eficientes. 
+
+Apesar das deepfakes oferecerem aplicações positivas em várias áreas, como entretenimento, educação e publicidade, elas têm se mostrado uma estratégia eficaz na propagação de notícias falsas, roubo de identidade e fraudes, configurando uma ameaça significativa no âmbito social, político e econômico. A preocupação com o tema se traduz no número de artigos científicos publicados relacionados ao mesmo entre 2017 e 2022, período no qual o valor cresceu de menos de 100 para mais de 3000  (MUBARAK et al., 2023). 
+
+Além disso, o surgimento de ferramentas user-friendly para criação de deepfakes possibilitou a fabricação de conteúdo sintético altamente realista entre usuários leigos em seus smartphones e computadores pessoais, agravando ainda mais os efeitos nocivos da tecnologia (MUBARAK et al., 2023).
+
+Um caso que ilustra o perigo da tecnologia ocorreu em 2019: criminosos usaram um software baseado em IA para se passar pelo chefe alemão de um CEO de uma empresa de energia, que recebeu uma ligação onde lhe foi pedida uma transferência de 220.000 euros para um suposto fornecedor húngaro. A transferência foi realizada e os criminosos receberam o dinheiro. Quando o CEO percebeu que tudo era uma fraude, já era tarde demais (STUPP, 2019). 
+
+Outro incidente envolvendo prejuízos econômicos aconteceu em junho de 2020, quando um funcionário de uma empresa de tecnologia recebeu uma mensagem de um suposto CEO que também pedia transferência de dinheiro, sendo o mesmo na verdade uma voz criada com uso de IA (PRADO, 2021).
+
+Já em se tratando das consequências políticas das deepfakes, um incidente marcante ocorreu nas vésperas das eleições primárias do estado de New Hampshire, Estados Unidos, em 2024. O fato é que um áudio falso simulando a voz do presidente americano Joe Biden circulou nas redes sociais do estado, numa tentativa de influenciar o resultado das eleições, um problema que pode se repetir no Brasil e trazer graves consequências à democracia (MARTINS, 2024).
+
+Assim, considerando os dados levantados, torna-se necessária a criação de ferramentas que possam detectar deepfakes e informar aos usuários se o conteúdo consumido é real ou não. No entanto, apesar de haver tecnologias que atendam ao requisito, a maioria delas foca na detecção de imagens e vídeos (MASOOD et al., 2021), deixando em segundo plano as deepfakes de áudio. 
+
+A geração de áudios falsos é possibilitada por duas tecnologias: as ferramentas Text-To-Speech (TTS), que convertem um texto em uma fala que imita a voz de uma pessoa real, e as do tipo Voice Conversion (VC), que modificam as características da voz de uma pessoa para se adaptar às do alvo desejado. Entre os principais modelos de geração de deepfakes de áudio, estão o Char2Wav, o WaveNet, o WaveGlow, o Tacotron e o MelNet (KHANJANI; WATSON; JANEJA, 2023).
+
+Quanto à detecção, há, atualmente, três principais abordagens na criação de algoritmos que identificam áudios falsos. A primeira é baseada em recursos perceptivos criados manualmente, que envolve a comparação de diferenças estatísticas entre a fala humana e sintética, usando algoritmos avançados de processamento de sinais. A segunda é a detecção genérica baseada em características espectrais, normalmente usando métodos de aprendizado de máquina para extrair características da frequência dos sinais de áudio e compará-los estatisticamente (HONG, 2023).
+
+Por fim, a última é a baseada em deep learning, ou aprendizagem profunda, que, segundo Goodfellow, Bengio e Courville (2016), pode ser definida como:
+
+> [...] um tipo específico de aprendizagem automática que atinge grande poder e flexibilidade ao representar o mundo como uma hierarquia aninhada de conceitos, com cada conceito definido em relação a conceitos mais simples e representações mais abstratas calculadas em termos de representações menos abstratas (tradução nossa).
+
+Essa abordagem, no geral, requer uma grande quantidade de dados classificados em reais ou falsos para obter um bom resultado, e subdivide-se em duas categorias: as baseadas na entrada de áudio bruto, que operam diretamente no áudio em sua forma de onda, e as baseadas em visão computacional (HONG, 2023). 
+
+Esta última segue seguinte metodologia: cada áudio é, primeiramente, pré-processado, sendo transformado em espectrogramas, para em seguida ser fornecido a um modelo, que é treinado para discernir os áudios e dizer se são ou não deepfakes  (ALMUTAIRI; ELGIBREEN, 2022). Os espectrogramas citados são representações visuais dos áudios, onde a cor e os eixos x e y representam a amplitude, o tempo e a frequência, respectivamente. Vale lembrar que essa categoria considera não só o conteúdo do áudio mas também a sua representação visual, aumentando a precisão da detecção (HONG, 2023). Entre os diferentes tipos de espectrograma, o constant-Q transform (CQT) é, no geral, mais exato quando utilizado para o deepfake de áudio (MÜLLER et al., 2022).
+
+Foram desenvolvidos vários modelos que usam a última estratégia para detectar áudios falsos. No entanto, notam-se limitações em todos eles, como desempenho dependente do tipo de função de ativação não linear, necessidade de ser testado em condições variáveis, tais como diferentes qualidades de áudio e técnicas de geração mais sofisticadas, eficácia reduzida contra ataques de ruído adversários e em casos de bases de dados muito distintas, e arquiteturas complexas demais (MUBARAK, et al., 2023).
+
+Além disso, como apontam Almutairi e Elgibreen (2022), quase todos os métodos de detecção existentes foram treinados para a língua inglesa, com poucas exceções que não incluem um específico para o português, de modo que os falantes dessa língua, incluindo os brasileiros, estão mais sujeitos aos impactos dessa tecnologia. 
+
+Outrossim, percebe-se uma avaliação limitada de falas com ruídos e sons de ambiente nos métodos de detecção existentes, levando a uma baixa robustez que permite a atacantes cibernéticos enganarem os modelos ao introduzir sons do mundo real (ALMUTAIRI; ELGIBREEN, 2022) ou realizar em tais áudios alterações superficiais, difíceis de detectar por um ser humano (KAWA, 2023). 
+
+Portanto, a pesquisa a ser desenvolvida é de alta relevância social, política e econômica, já que pode auxiliar a mitigar os impactos apresentados nos três setores. Ademais, tendo em vista a não existência de um conjunto de áudios reais e falsos em português, sua  criação juntamente com um modelo classificatório que leve em consideração áudios com ruídos pode servir de base para pesquisas futuras na área. Por fim, ao se produzir um modelo específico para a língua portuguesa, a sociedade, o governo, e empresas e instituições brasileiras tornam-se aptas a distinguir os conteúdos produzidos nas redes, levando a uma menor chance de serem enganadas, mal-informadas e prejudicadas, e contribuindo para um ambiente digital mais seguro e confiável.
