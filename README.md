@@ -34,7 +34,7 @@ Here is a list of all prerequisites necessary for running the project locally:
 <h3>Cloning</h3>
 
 ```bash
-git clone https://github.com/eric-figueira/unfake-web.git
+git clone https://github.com/Unfake-Official/web.git
 ```
 
 <h3>Starting</h3>
@@ -91,7 +91,7 @@ The request sends an audio file through the body. It must have ```.wav``` extens
 
 If you want to somehow contribute to this project, start by creating a branch named as follow. Then, make your changes and follow commit patterns. Finally, open an pull request. 
 
-1. `git clone https://github.com/eric-figueira/unfake-web.git`
+1. `git clone https://github.com/Unfake-Official/web.git`
 2. `git checkout -b feature/NAME`
 3. Follow commit patterns
 4. Open a Pull Request explaining the problem solved or feature made, if exists, append screenshot of visual modifications and wait for the review!
