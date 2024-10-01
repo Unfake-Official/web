@@ -10,13 +10,12 @@
 <p align="center">
  <a href="#about">About</a> • 
  <a href="#started">Getting Started</a> • 
-  <a href="#started">App Routes</a> • 
-  <a href="#colab">Collaborators</a> •
+ <a href="#started">App Routes</a> • 
  <a href="#contribute">Contribute</a>
 </p>
 
 
-<h2 id="started">📌 About the project</h2>
+<h2 id="about">📌 About the project</h2>
 <p>
 The growing evolution of artificial intelligence (A.I.) tools is making them increasingly efficient and globally accessible. However, some of these technologies can be harmful if used maliciously, and that includes deepfakes. Deepfakes are a type of synthetic media that generates realistic content and has the potential to clone an individual's identity, using it to spread fake news, damage their reputation and promote fraud and security breaches. Thus, there is a need for ways to verify whether a piece of media is real or artificially synthesized. However, even though there are technologies that meet this need, the detection of audio deepfakes is still a challenge, considering that it is not as effective when it comes to speech in Portuguese and has questionable effectiveness in audio with the presence of noise. In this sense, Unfake aims to develop an A.I. model capable of identifying whether an audio contains human or synthetic speech. In this way, we hope to make it possible for lay users to identify deepfakes in a robust and effective way, contributing to a safer and more reliable digital environment, as well as encouraging future research in the area using the data obtained in the project.</p>
 <br>
